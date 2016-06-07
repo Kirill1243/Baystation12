@@ -45,7 +45,6 @@ script:
   - (! grep 'step_[xy]' maps/**/*.dmm)
   - (! find nano/templates/ -type f -exec md5sum {} + | sort | uniq -D -w 32 | grep nano)
   - (! grep -En "<\s*span\s+class\s*=\s*('[^'>]+|[^'>]+')\s*>" **/*.dm)
-  - (num=`grep -E '\\\\(red|blue|green|black|b|i[^mc])' **/*.dm | wc -l`; echo "$num escapes (expecting ${MACRO_COUNT} or less)"; [ $num -le ${MACRO_COUNT} ])
   - (num=`grep -E '"/atom' **/*.dm | wc -l`; echo "$num /atom text paths (expecting 2 or less)"; [ $num -le 2 ])
   - (num=`grep -E '"/area' **/*.dm | wc -l`; echo "$num /area text paths (expecting 3 or less)"; [ $num -le 3 ])
   - (num=`grep -E '"/datum' **/*.dm | wc -l`; echo "$num /datum text paths (expecting 2 or less)"; [ $num -le 2 ])
